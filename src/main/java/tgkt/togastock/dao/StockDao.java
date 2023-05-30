@@ -11,5 +11,5 @@ public interface StockDao {
     Stock getBySymbol(String symbol);
     List<Stock> getListByName(String name);
     List<Stock> getListByIndustry(String industry);
-    Stock getAllList();
+    List<Stock> getAllList();
 }
