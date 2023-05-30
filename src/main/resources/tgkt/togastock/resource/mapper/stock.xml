@@ -34,4 +34,9 @@
     <select id="getAllList" resultType="tgkt.togastock.bean.Stock">
         SELECT * FROM `stock`
     </select>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into stock
+        (ts_code, symbol, name,area,industry,market,exchange)
+        values (#{tsCode},#{symbol},#{name},#{area},#{industry},#{market},#{exchange});
+    </insert>
 </mapper>
