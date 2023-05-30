@@ -52,6 +52,7 @@ public class UserService {
     public List<User> getUsers() {
         try (var session = Database.getInstance().openSession()) {
             var userDao = session.getMapper(UserDao.class);
+
             return userDao.getAllList().stream().peek(
                     u -> u.setPassword("")
             ).toList();

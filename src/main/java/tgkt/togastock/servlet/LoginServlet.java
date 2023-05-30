@@ -25,7 +25,7 @@ public class LoginServlet extends BaseServlet{
             name = req.getParameter("name");
             password = req.getParameter("password");
 
-            User u = UserService.getInstance().login(
+            var u = UserService.getInstance().login(
                     name, password
             );
 
