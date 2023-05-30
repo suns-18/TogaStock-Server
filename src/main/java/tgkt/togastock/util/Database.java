@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Database {
     private static Database instance;
     private static final String MYBATIS_CONFIG =
-            "ags/edu/cu/oca/resource/mybatis-config.xml";
+            "tgkt/togastock/resource/mybatis-config.xml";
 
     public static Database getInstance() {
         if (instance == null) {

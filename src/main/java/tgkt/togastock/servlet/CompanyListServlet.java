@@ -13,12 +13,28 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "StockListServlet", value = "/api/stockList")
-public class StockListServlet extends BaseServlet {
+@WebServlet(name = "CompanyListServlet", value = "/api/companyList")
+public class CompanyListServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
+        // 前端要传入的参数
+        // 这里并不需要
+        // 需要的话先声明，String的话先设为null
+
+        try{
+            // 获取参数
+            // 预处理
+        }
+        catch (Exception e){
+            // 输出错误信息
+            toJson(resp,
+                    BaseResponse.builder()
+                            .ok(false).msg("参数错误").build());
+            return;
+        }
 
         try{
             // 调用本服务类获取模式记录列表
@@ -46,10 +62,9 @@ public class StockListServlet extends BaseServlet {
             // 正常列表
             toJson(resp, StocksResponse.builder().list(respList).ok(true).build());
         }catch (Exception e){
-            e.printStackTrace();
             // 错误信息
             toJson(resp, BaseResponse.builder()
-                    .ok(false).msg("获取股票列表失败，可能是数据库读取错误").build());
+                    .ok(false).msg("获取列表失败，可能是数据库读取错误").build());
         }
     }
 }
