@@ -53,7 +53,7 @@ public class UserListServlet extends BaseServlet {
             });
 
             // 正常列表
-            toJson(response, UsersResponse.builder().list(respList).build());
+            toJson(response, UsersResponse.builder().list(respList).ok(true).build());
         }catch (Exception e){
             // 错误信息
             toJson(response, BaseResponse.builder()
