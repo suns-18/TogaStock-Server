@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tgkt.togastock.dao.UserDao">
+    <update id="createTable" databaseId="mysql">
+        create table stock_trading.`user`
+        (
+        user_id int auto_increment
+        primary key,
+        nick_name varchar(255) null,
+        name varchar(255) null,
+        phone varchar(255) null,
+        password varchar(255) null,
+        sex varchar(255) null,
+        create_time datetime null,
+        update_time datetime null,
+        status varchar(255) null,
+        role varchar(255) null,
+        account_id int null,
+        constraint user_ibfk_1
+        foreign key (account_id) references stock_trading.account (account_id)
+        )
+        charset = utf8;
+
+        create index account_id
+        on stock_trading.user (account_id);
+    </update>
+
+    <select id="getByID" resultType="tgkt.togastock.bean.User">
+        SELECT * FROM `user` WHERE `user_id` = #{userId}
+    </select>
+
+    <select id="getByName" resultType="tgkt.togastock.bean.User">
+        SELECT * FROM `user` WHERE `name` = #{name}
+    </select>
+
+    <select id="getListByRole" resultType="tgkt.togastock.bean.User">
+        SELECT * FROM `user` WHERE `role` = #{role}
+    </select>
+
+    <select id="doLogin" resultType="tgkt.togastock.bean.User">
+        SELECT * FROM `user` WHERE `name` = #{name} AND `password` = #{password}
+    </select>
+
+    <select id="getAllList" resultType="tgkt.togastock.bean.User">
+        SELECT * FROM `user`
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into `user` (nick_name, `name`, phone, password, sex, create_time, update_time, status, role,account_id)
+        VALUES (
+        #{nickName}, #{name}, #{phone}, #{password}, #{sex}, #{createTime}, #{updateTime}, #{status}, #{role},
+        #{accountId}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE `user` SET
+        `nick_name` = #{nickName}
+        `name` = #{name},
+        `phone` = #{phone},
+        `password` = #{password},
+        `sex` = #{sex},
+        `create_time` = #{createTime},
+        `update_time` = #{updateTime},
+        `status` = #{status},
+        `role` = #{role},
+        `account_id` = #{accountId}
+        WHERE `user_id` = #{userId}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM `user`
+        WHERE `user_id` = #{userId}
+    </delete>
+</mapper>

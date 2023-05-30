@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tgkt.togastock.dao.CompanyDao">
+    <select id="getByID" resultType="tgkt.togastock.bean.Company">
+        SELECT * FROM `company` WHERE `company_id` = #{companyId}
+    </select>
+
+    <select id="getAllList" resultType="tgkt.togastock.bean.Company">
+        SELECT * FROM `company`
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into company
+        (ts_code, exchange, chairman, reg_capital, website, main_business, introduction)
+        values (#{tsCode},#{exchange},#{chairman},#{regCapital},#{website},#{mainBusiness},#{introduction});
+    </insert>
+
+    <update id="update">
+        UPDATE `stock` SET
+        `ts_code` = #{tsCode}
+        `exchange` = #{exchange},
+        `chairman` = #{chairman},
+        `reg_capital` = #{regCapital},
+        `website` = #{website},
+        `main_business` = #{mainBusiness},
+        `introduction` = #{introduction}
+        WHERE `company_id` = #{companyId}
+    </update>
+
+</mapper>

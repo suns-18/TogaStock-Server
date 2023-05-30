@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tgkt.togastock.dao.AccountDao">
+    <select id="getByID" resultType="tgkt.togastock.bean.Account">
+        SELECT * FROM `account` WHERE `account_id` = #{accountId}
+    </select>
+
+    <select id="getAllList" resultType="tgkt.togastock.bean.Account">
+        SELECT * FROM `account`
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into account
+        (asset, market_value, money_rest)
+        values (#{asset},#{marketValue},#{moneyRest});
+    </insert>
+
+    <update id="update">
+        UPDATE `account` SET
+        `asset` = #{asset},
+        `market_value` = #{marketValue},
+        `money_rest` = #{moneyRest}
+    </update>
+
+</mapper>
