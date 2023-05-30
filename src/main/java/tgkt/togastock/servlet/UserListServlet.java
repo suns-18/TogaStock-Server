@@ -41,6 +41,7 @@ public class UserListServlet extends BaseServlet {
             // 不需要遍历，不需要包装，只需复制粘贴
             beanList.forEach(u->{
                 var item = UserResponse.builder()
+                        .ok(true)
                         .userId(u.getUserId())
                         .name(u.getName())
                         .gender(u.getGender())

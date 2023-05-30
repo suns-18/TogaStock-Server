@@ -31,6 +31,7 @@ public class StockListServlet extends BaseServlet {
             // 不需要遍历，不需要包装，只需复制粘贴
             beanList.forEach(e->{
                 var item = StockResponse.builder()
+                        .ok(true)
                         .name(e.getName())
                         .area(e.getArea())
                         .exchange(e.getExchange())
