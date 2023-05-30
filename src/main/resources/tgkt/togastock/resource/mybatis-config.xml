@@ -13,6 +13,7 @@
         -->
         <property name="mysql.username" value="root"/>
         <property name="mysql.pwd" value="root"/>
+
         <!--
             FINISH - DELETE BEFORE UPDATE!
         -->

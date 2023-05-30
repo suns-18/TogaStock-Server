@@ -33,5 +33,7 @@
         `introduction` = #{introduction}
         WHERE `company_id` = #{companyId}
     </update>
-
+    <delete id="delete">
+        DELETE FROM `order` WHERE `order_no` = #{orderNo}
+    </delete>
 </mapper>
