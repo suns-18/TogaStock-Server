@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties>
+        <property name="env" value="dev"/>
+        <property name="mysql.host" value="localhost"/>
+        <property name="mysql.port" value="3306"/>
+        <property name="mysql.database" value="stock_trading"/>
+        <!--
+            DELETE BEFORE UPDATE!
+        -->
+        <property name="mysql.username" value="root"/>
+        <property name="mysql.pwd" value="root"/>
+        <!--
+            FINISH - DELETE BEFORE UPDATE!
+        -->
+    </properties>
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <environments default="${env}">
+        <environment id="dev">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.database}?characterEncoding=utf8&amp;serverTimezone=UTC&amp;useUnicode=true&amp;useSSL=false"/>
+                <property name="username" value="${mysql.username}"/>
+                <property name="password" value="${mysql.pwd}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <databaseIdProvider type="DB_VENDOR">
+        <property name="MySQL" value="mysql"/>
+    </databaseIdProvider>
+
+    <mappers>
+        <mapper resource="tgkt/togastock/resource/mapper/stock.xml"/>
+        <mapper resource="tgkt/togastock/resource/mapper/user.xml"/>
+    </mappers>
+</configuration>
