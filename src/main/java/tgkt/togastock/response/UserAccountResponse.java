@@ -1,11 +1,15 @@
-package tgkt.togastock.bean;
+package tgkt.togastock.response;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
+import tgkt.togastock.bean.Account;
 
 @Data
-public class User {
+@SuperBuilder
+public class UserAccountResponse extends BaseResponse{
     private Integer userId;
-    private Integer accountId;
+    private Account account;
     private String nickName;
     private String name;
     private String phone;

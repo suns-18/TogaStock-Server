@@ -1,11 +1,15 @@
-package tgkt.togastock.bean;
+package tgkt.togastock.response;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
+import tgkt.togastock.bean.Stock;
 
 @Data
-public class Company {
+@SuperBuilder
+public class CompanyStockResponse extends BaseResponse{
     private Integer companyId;
-    private Integer tsCode;
+    private Stock stock;
     private String exchange;
     private String chairman;
     private Double regCapital;
